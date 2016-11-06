@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Web Intelligence Meeting Scheduler</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="js/jquery.min.js" type="text/javascript"></script>
+        <script src="js/bootstrap.min.js" type="text/javascript"></script>
+        <link rel="stylesheet" href="css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="css/edit.css"/>
+    </head>
+    <body>
+        <div class="container">
+            
+            <div class="jumbotron text-center">
+                <h3>Registration Form</h3>
+                <p>We glad you are joining WIMS. Please fill in the form</p>
+                
+                <form class="form-horizontal">
+                    
+                    <div class="form-group">
+                        <div class="form-group col-sm-6">
+                            <label for="name" class="control-label col-xs-3">Name:</label>
+                            <div class="col-xs-9">
+                                <input type="text" class="form-control" id="name" />
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <label for="lastName" class="control-label col-xs-3">Last Name:</label>
+                            <div class="col-xs-9">
+                                <input type="text" class="form-control" id="lastName" />
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <div class="form-group col-sm-6">
+                            <label for="email" class="control-label col-xs-3">Email:</label>
+                            <div class="col-xs-9">
+                                <input type="email" class="form-control" id="email" />
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <div class="form-group col-sm-6">
+                            <label for="pwd" class="control-label col-xs-3">Password:</label>
+                            <div class="col-xs-9">
+                                <input type="password" class="form-control" id="pwd" />
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <label for="cpwd" class="control-label col-xs-4">Confirm Password:</label>
+                            <div class="col-xs-8">
+                                <input type="password" class="form-control" id="cpwd" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-success col-md-1 col-md-offset-2">Submit</button>
+                    </div>
+                </form>
+            </div>
+            
+        </div>
+    </body>
+</html>
