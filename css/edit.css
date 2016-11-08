@@ -44,7 +44,7 @@ body {
     }
 }
 
-.jumbotron {
+#jumbotron_reg {
     background-image: url('http://www.svucea.com/attachments/Image/register_1.jpg?template=generic');
     background-repeat: no-repeat;
     background-position: center;
