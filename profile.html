@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Web Intelligence Meeting Scheduler</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="js/jquery.min.js" type="text/javascript"></script>
+        <script src="js/bootstrap.min.js" type="text/javascript"></script>
+        <link rel="stylesheet" href="css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="css/edit.css"/>
+    </head>
+    <body>
+        <div class="container">
+            <nav class="navbar navbar-inverse">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="#">Web Intelligence Meeting Scheduler</a>
+                    </div>
+                    
+                    <div id="navbar" class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Account <span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">Profile</a></li>
+                                    <li><a href="#">History</a></li>
+                                    <li><a href="#">Meetings</a></li>
+                                    <li class="divider"></li>
+                                    <li class="dropdown-header">Logout</li>
+                                </ul>
+                            </li>
+                        </ul>
+                        
+                    </div>
+                </div>
+            </nav>
+            <div class="jumbotron">
+                <h1>Meetings</h1>
+                <ul class="nav nav-tabs">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#active">Active</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#history">History</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#rejected">Rejected</a>
+                    </li>
+                </ul>
+                <div id="active" class="table">
+                    <table class="table table-bordered table-responsive">
+                        <thead>
+                            <th class="col-md-10">Details</th>
+                            <th class="col-md-2">Options</th>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Master meeting</td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div id="history" class="table">
+                    <table class="table table-bordered table-responsive">
+                        <thead>
+                            <th class="col-md-10">Details</th>
+                            <th class="col-md-2">Options</th>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Past meeting</td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div id="rejected" class="table">
+                    <table class="table table-bordered table-responsive">
+                        <thead>
+                            <th class="col-md-10">Details</th>
+                            <th class="col-md-2">Options</th>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Master meeting</td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <button class="btn btn-info">Meeting Schedule</button>
+            </div>
+        </div>
+    </body>
+</html>
