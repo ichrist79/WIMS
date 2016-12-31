@@ -32,46 +32,41 @@ include("header.php");
                             </div>
                         </div>
 						<div class="form-group col-sm-6" >
-                <label for="Day" class="control-label col-xs-3">Day</label>
+							<label for="Day" class="control-label col-xs-3">Day</label>
                             <div class="col-xs-9">
-							<form name="add_me" id="add_me">
+						<!--	<form name="add_me" id="add_me" >-->
 							<table id="date">
-							<input type="date" name="date[]" />
-							<input type="time" name="time[]" />
+							<input type="date" name="date[]" class="form-control"/>
+							<input type="time" name="time[]" class="form-control"/>
 							<button type="button" name="add" id="add_input">Add</button>
 							</table>
-							</form>
+						<!--	</form>-->
                 </div>
-            </div>
-			<!--			<div class="form-group col-sm-6" >
-                <label for="Time" class="control-label col-xs-3">Time</label>
+            </div>			
+							<div  class="form-group col-sm-6" >
+                            <label for="Participants" class="control-label col-xs-3">Participants</label>
                             <div class="col-xs-9">
-							<form name="add_me2" id="add_me2">
-							<table id="time">
-							<input type="time" name="time[]" />
-							<button type="button" name="add2" id="add_input2">Add</button>
+							<!--<form name="add_me" id="add_me">-->
+							<table id="email">
+							<input type="text" name="email[]" placeholder="Enter Emails" class="form-control"/>
+							<button type="button" name="add_inputm" id="add_inputm">Add</button>
 							</table>
-							</form>
-                </div>
-            </div>-->
-			
-		<!--	<div  class="form-group col-sm-6" >
-                            <label for="desription" class="control-label col-xs-3">Participants</label>
-                            <div class="col-xs-9">
-							<textarea rows="5" cols="60" class="form-control" id="participants">
-							</textarea>
+							<!--<input type="button" name="submit" id="submit" value="Submit"/>-->
+							<!--</form>-->
                             </div>
-                        </div>-->
-						<input type="submit" name="submit" value="Register" class="btn btn-primary btn-block btn-lg" tabindex="7">
+                        </div>
+						<input type="submit" name="submit" id="submit" value="Register" class="btn btn-primary btn-block btn-lg" tabindex="7">
                     </div>
 					
     </form>
+	
 </div>
    
 <?php
-
+try{
 	if (isset ($_POST['submit'])){
 	$datecount = count($_POST["date"]);	
+	$mailcount = count($_POST["email"]);	
 	$userid = $_SESSION['uid'];
 	$title = $_POST['title'];
 	$location = $_POST['location'];
@@ -100,18 +95,38 @@ if($title == "" || $location == "" || $perigrafi == ""){
 					if($datecount > 0){
 						for($i=0; $i<$datecount; $i++){
 							if(trim($_POST["date"][$i] != '')){	
-									
-									//theloume na paroume to event_id gia tin parallili eggrafi sto event_day_time
 									$conn->exec("INSERT INTO event_day_time (id_event,day,time,vote) VALUES ('".$eventid."','".$_POST["date"][$i]."','".$_POST["time"][$i]."','0')");
 						}else{
 							echo "dwse kati";
 							}	
 													}
 									}
-   
+									if($mailcount > 0){
+										for($m=0; $m<$mailcount; $m++){
+											if(trim($_POST["email"][$m] != '')){	
+												$conn->exec("INSERT INTO participants (user_id,email,event_id) VALUES ('".$userid."','".$_POST["email"][$m]."','".$eventid."')");
+												$to      = ($_POST["email"][$m]);
+												$subject = 'the subject';
+												$message = 'hello';
+												$headers = 'From: wimsmeetings@gmail.com' . "\r\n" .
+												'Reply-To: webmaster@example.com' . "\r\n" .
+												'X-Mailer: PHP/' . phpversion();
+												mail($to, $subject, $message, $headers);
+												echo 'Email Sent.';
+																				}else{
+																					echo "dwse kati";
+																					}	
+																		}
+														}
 		}
+	}else {
+		echo "dwse times";
 	}
-   ?>
+	}
+catch(PDOException $e) {
+			echo '{"error1":{"text":'. $e->getMessage() .'}}';
+		}
+?>
    
    
    

@@ -136,12 +136,12 @@ if(isset($_SESSION['uid'])){
 	-->		
 	
 	
-	<script>
+<script>
 $(document).ready(function(){
  var i=1;
  $('#add_input').click(function(){
  i++;
- $('#date').append('<tr id="row'+i+'"><td><input type="date" name="date[]" /></td><td><input type="time" name="time[]" /></td><td><button type="button" name="remove" id="'+i+'" class="btn_remove">Remove</button></td></tr>');
+ $('#date').append('<tr id="row'+i+'"><td><input type="date" name="date[]" class="form-control"/></td><td><input type="time" name="time[]" class="form-control"/></td><td><button type="button" name="remove" id="'+i+'" class="btn_remove">Remove</button></td></tr>');
  });
  $(document).on('click', '.btn_remove', function(){
  var button_id = $(this).attr("id");
@@ -151,18 +151,44 @@ $(document).ready(function(){
  $.ajax({
  url:"meetingschedule.php",
  method:"POST",
- data:$('#add_me').serialize(),
- success: function(data)
- {
- alert(data);
- $('#add_me')[0].reset();
- }
+ //data:$('#add_me').serialize(),
+// success: function(data)
+// {
+// alert(data);
+// $('#add_me')[0].reset();
+ //}
  });
  });
 });
 </script>
 
 
+
+<script>
+$(document).ready(function(){
+ var m=1;
+ $('#add_inputm').click(function(){
+ m++;
+ $('#email').append('<tr id="rowm'+m+'"><td><input type="text" name="email[]" placeholder="Enter Emails" class="form-control"/></td><td><button type="button" name="remove" id="'+m+'" class="btn_remove">Remove</button></td></tr>');
+ });
+ $(document).on('click', '.btn_remove', function(){
+ var button_id = $(this).attr("id");
+ $('#rowm'+button_id+'').remove();
+ });
+ $('#submit').click(function(){
+ $.ajax({
+ url:"meetingschedule.php",
+ method:"POST",
+ //data:$('#add_me').serialize(),
+// success: function(data)
+ //{
+ //alert(data);
+// $('#add_me')[0].reset();
+ //}
+ });
+ });
+});
+</script>
 
 
 	</head>
