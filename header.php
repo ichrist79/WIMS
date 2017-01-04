@@ -26,7 +26,38 @@ if(isset($_SESSION['uid'])){
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-rc1/jquery.min.js"></script>
 		<link rel="stylesheet" type="text/css" href="lib/bootstrap-datepicker.css" />
 		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAxIlVbCHNbS_I5iR5Qy8MHptycEM2xZXs&libraries=places"></script>
-  
+  <!--<script>
+  $( function() {
+    $( "#datepicker" ).datepicker();
+	$('#datepicker').on('changeDate', function() {
+                        $('#onselectTarget4').text($(this).val());
+                    });
+  } );
+  </script>
+        <script>
+            $(function() {
+            $('#onselectExample').timepicker();
+            $('#onselectExample').on('changeTime', function() {
+            $('#onselectTarget').text($(this).val());
+             });
+            });
+        </script>
+		<script>
+            $(function() {
+            $('#onselectExample1').timepicker();
+            $('#onselectExample1').on('changeTime', function() {
+			$('#onselectTarget1').text($(this).val());
+                });
+            });
+        </script>
+		<script>
+            $(function() {
+			$('#onselectExample2').timepicker();
+            $('#onselectExample2').on('changeTime', function() {
+            $('#onselectTarget2').text($(this).val());
+                });
+            });
+            </script>-->
 			<script type="text/javascript">
 				google.maps.event.addDomListener(window,'load', initilize);
 				function initilize() {
@@ -38,13 +69,79 @@ if(isset($_SESSION['uid'])){
 				});
 				};
 			</script>
+		<!--	<script type="text/javascript">
+        $(function () {
+            $('#datetimepicker12').datetimepicker({
+                inline: true,
+                sideBySide: true
+            });
+        });
+    </script>-->
+	<!--<script>
 		
+		$(function() {
+       var scntDiv = $('#p_scents');
+        var i = $('#p_scents p').size() + 1;
+        
+        $('#addScnt').on('click', function() {
+                
+                $('<p><label for="p_scnts"><input type="date" id="p_scnt" size="20" name="date' + i +'" value="" placeholder="Input Value" /> <label for="p_scnts"><input type="time" id="p_scnt" size="20" name="time' + i +'" value="" placeholder="Input Value" /></p>').appendTo(scntDiv);
+				var label = document.getElementById('datecounter');
+				label.textContent = i;
+				label.value = i;
+				i++;
+                return false;
+        });
+      <!--  </label> <a href="#" id="remScnt">Remove</a>-->
+        <!--$('#remScnt').on('click', function() { 
+      //          if( i > 2 ) {
+        //                $(this).parents('p').remove();
+          //              i--;
+            //    }
+             //   return false;
+      //  });
+});
+		
+	</script>-->
+<!--	<script>
+		
+		$(function() {
+       var scntDiv = $('#p_scents');
+        var x = $('#p_scents p').size() + 1;
+        var z = $('#p_scents p').size() + 1;
+        $('#addScnt').on('click', function() {
+                
+                $('<p><label for="p_scnts"><input type="date" id="p_scnt" size="20" name="'+ x +'" value="" placeholder="Input Value" /> <label for="p_scnts"><input type="time" id="p_scnt" size="20" name="'+ z +'" value="" placeholder="Input Value" /></p>').appendTo(scntDiv);
+				var label = document.getElementById('datecounter');
+				label.textContent = z;
+				label.value = z;
+				
+				label.textContent = x;
+				label.value = x;
+				x++;
+				z++;
+                return false;
+        });
+      <!--  </label> <a href="#" id="remScnt">Remove</a>-->
+        <!--$('#remScnt').on('click', function() { 
+      //          if( i > 2 ) {
+        //                $(this).parents('p').remove();
+          //              i--;
+            //    }
+             //   return false;
+      //  });
+});
+		
+	</script>
+	-->		
+	
+	
 <script>
 $(document).ready(function(){
  var i=100;
  $('#add_input').click(function(){
  i++;
- $('#date').append('<tr id="row'+i+'"><td><input type="date" name="date[]" class="form-control"/></td><td><input type="time" name="time[]" class="form-control"/></td><td><button type="button" name="remove" id="'+i+'" class="btn_remove">Remove</button></td></tr>');
+ $('#date').append('<tr id="row'+i+'"><td><input type="date" name="date[]" min="<?php echo date('Y-m-d', strtotime("+2 day")); ?>" class="form-control"/></td><td><input type="time" name="time[]" class="form-control"/></td><td><button type="button" name="remove" id="'+i+'" class="btn_remove">Remove</button></td></tr>');
  });
  $(document).on('click', '.btn_remove', function(){
  var button_id = $(this).attr("id");
@@ -65,8 +162,8 @@ $(document).ready(function(){
 });
 </script>
 
-<!--<input class="form-control" placeholder="Contact email" name="email" id="contact_email" type="email" title="Contacts email (format: xxx@xxx.xxx)" pattern="[a-zA-Z0-9!#$%&amp;*+\/=?^_`{|}~.-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*">
-<input type="text" name="email[]" placeholder="Enter Emails" class="form-control"/>-->
+
+
 <script>
 $(document).ready(function(){
  var m=1;
