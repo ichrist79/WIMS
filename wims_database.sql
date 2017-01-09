@@ -3,7 +3,11 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
+<<<<<<< HEAD
 -- Generation Time: Jan 09, 2017 at 02:10 PM
+=======
+-- Generation Time: Dec 24, 2016 at 07:28 PM
+>>>>>>> refs/remotes/origin/master
 -- Server version: 10.1.16-MariaDB
 -- PHP Version: 5.6.24
 
@@ -17,12 +21,17 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
+<<<<<<< HEAD
 -- Database: `wimsfinal`
+=======
+-- Database: `wims_database`
+>>>>>>> refs/remotes/origin/master
 --
 
 -- --------------------------------------------------------
 
 --
+<<<<<<< HEAD
 -- Table structure for table `events`
 --
 
@@ -58,10 +67,22 @@ INSERT INTO `events` (`id_event`, `user_id`, `title`, `perigrafi`, `location`, `
 (129, 25, 'faaf', 'www', 'Florida, United States', 1),
 (130, 25, 'gg', 'ss', 'Florida, United States', 1),
 (131, 24, 'sfsfsfd', 'sdffd', 'France', 0);
+=======
+-- Table structure for table `hours_meeting`
+--
+
+CREATE TABLE `hours_meeting` (
+  `hours_id` int(11) NOT NULL,
+  `meeting_id` int(11) NOT NULL,
+  `meeting_hour` time NOT NULL,
+  `votes` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+>>>>>>> refs/remotes/origin/master
 
 -- --------------------------------------------------------
 
 --
+<<<<<<< HEAD
 -- Table structure for table `event_day_time`
 --
 
@@ -114,10 +135,23 @@ INSERT INTO `event_day_time` (`id`, `id_event`, `day`, `time`, `vote`) VALUES
 (177, 129, '2017-01-18', '01:01:00', 0),
 (178, 130, '2017-01-19', '02:01:00', 0),
 (179, 131, '2017-01-13', '02:00:00', 0);
+=======
+-- Table structure for table `meeting`
+--
+
+CREATE TABLE `meeting` (
+  `meeting_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `meeting_title` varchar(256) NOT NULL,
+  `location` varchar(255) NOT NULL,
+  `status` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+>>>>>>> refs/remotes/origin/master
 
 -- --------------------------------------------------------
 
 --
+<<<<<<< HEAD
 -- Table structure for table `event_vote`
 --
 
@@ -155,10 +189,20 @@ INSERT INTO `event_vote` (`id`, `id_event`, `id_event_day`, `user_id`) VALUES
 (159, 122, 171, 26),
 (160, 123, 172, 24),
 (161, 123, 173, 24);
+=======
+-- Table structure for table `meeting_participate`
+--
+
+CREATE TABLE `meeting_participate` (
+  `meeting_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+>>>>>>> refs/remotes/origin/master
 
 -- --------------------------------------------------------
 
 --
+<<<<<<< HEAD
 -- Table structure for table `participants`
 --
 
@@ -211,10 +255,31 @@ INSERT INTO `participants` (`id`, `user_id`, `email`, `id_event`) VALUES
 (77, 25, 'test4@gmail.com', 130),
 (78, 24, 'test1@gmail.com', 131),
 (79, 24, 'test3@gmail.com', 131);
+=======
+-- Table structure for table `user`
+--
+
+CREATE TABLE `user` (
+  `user_id` int(11) NOT NULL,
+  `first_name` varchar(50) NOT NULL,
+  `last_name` varchar(50) NOT NULL,
+  `display_name` varchar(20) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `password` varchar(64) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`user_id`, `first_name`, `last_name`, `display_name`, `email`, `password`) VALUES
+(1, 'Ioannis', 'Christ', 'John', 'ioannis.christ@gmail.com', '123456');
+>>>>>>> refs/remotes/origin/master
 
 -- --------------------------------------------------------
 
 --
+<<<<<<< HEAD
 -- Table structure for table `user`
 --
 
@@ -236,12 +301,22 @@ INSERT INTO `user` (`user_id`, `first_name`, `last_name`, `display_name`, `email
 (24, 'τεστ2', 'τεστ2', 'τεστ2', 'test2@gmail.com', 'a94a8fe5ccb19ba61c4c0873d391e987982fbbd3'),
 (25, 'τεστ3', 'τεστ3', 'τεστ3', 'test3@gmail.com', 'a94a8fe5ccb19ba61c4c0873d391e987982fbbd3'),
 (26, 'τεστ4', 'τεστ4', 'τεστ4', 'test4@gmail.com', 'a94a8fe5ccb19ba61c4c0873d391e987982fbbd3');
+=======
+-- Table structure for table `user_choices`
+--
+
+CREATE TABLE `user_choices` (
+  `user_id` int(11) NOT NULL,
+  `hours_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+>>>>>>> refs/remotes/origin/master
 
 --
 -- Indexes for dumped tables
 --
 
 --
+<<<<<<< HEAD
 -- Indexes for table `events`
 --
 ALTER TABLE `events`
@@ -266,6 +341,24 @@ ALTER TABLE `participants`
   ADD PRIMARY KEY (`id`),
   ADD KEY `user_id` (`user_id`),
   ADD KEY `id_event` (`id_event`);
+=======
+-- Indexes for table `hours_meeting`
+--
+ALTER TABLE `hours_meeting`
+  ADD PRIMARY KEY (`hours_id`);
+
+--
+-- Indexes for table `meeting`
+--
+ALTER TABLE `meeting`
+  ADD PRIMARY KEY (`meeting_id`);
+
+--
+-- Indexes for table `meeting_participate`
+--
+ALTER TABLE `meeting_participate`
+  ADD PRIMARY KEY (`meeting_id`,`user_id`);
+>>>>>>> refs/remotes/origin/master
 
 --
 -- Indexes for table `user`
@@ -275,6 +368,7 @@ ALTER TABLE `user`
   ADD UNIQUE KEY `email` (`email`);
 
 --
+<<<<<<< HEAD
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -298,11 +392,36 @@ ALTER TABLE `event_vote`
 --
 ALTER TABLE `participants`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=80;
+=======
+-- Indexes for table `user_choices`
+--
+ALTER TABLE `user_choices`
+  ADD PRIMARY KEY (`user_id`,`hours_id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `hours_meeting`
+--
+ALTER TABLE `hours_meeting`
+  MODIFY `hours_id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `meeting`
+--
+ALTER TABLE `meeting`
+  MODIFY `meeting_id` int(11) NOT NULL AUTO_INCREMENT;
+>>>>>>> refs/remotes/origin/master
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
+<<<<<<< HEAD
   MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+=======
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+>>>>>>> refs/remotes/origin/master
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
