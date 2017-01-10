@@ -10,6 +10,34 @@ foreach ($dataSet as $data) {
     $email = $data->getUserEmail();
 }
 
+$dataSet3 = $db->getMeetings("SELECT * FROM `events` WHERE user_id = '" . $user_id . "' AND active = '1' ");
+if ($dataSet3) {
+    foreach ($dataSet3 as $data3) {
+        $id_event2 = $data3->getActiveId();
+        $stmt4 = $conn->prepare("SELECT title,location FROM `events` WHERE id_event = '" . $id_event2 . "'");
+        $stmt4->execute();
+        $get_title_location = $stmt4->fetch(PDO::FETCH_ASSOC);
+        $title1 = $get_title_location['title'];
+        $location1 = $get_title_location['location'];
+        $stmt3 = $conn->prepare("SELECT MAX(vote) AS MaxVote FROM `event_day_time` WHERE id_event = '" . $id_event2 . "' ");
+        $stmt3->execute();
+        $vote2 = $stmt3->fetchColumn();
+        $dataSet4 = $db->getMeetingsDate("SELECT * FROM `event_day_time` WHERE vote= '" . $vote2 . "' AND id_event= '" . $id_event2 . "' LIMIT 1 ");
+        foreach ($dataSet4 as $data4) {
+            echo '<table cellpadding="0" cellspacing="0" class="table table-hover">';
+            echo '<tr><th>Τίτλος Meeting</th><th>Ημερομηνία</th><th>Ώρα</th><th>Τοποθεσία</th></tr>';
+            echo '<tr>';
+            echo '<td>', $title1, '</td>';
+            echo '<td>', $data4->getMeetingDateDay(), '</td>';
+            echo '<td>', $data4->getMeetingDateTime(), '</td>';
+            echo '<td style="width:25%">', $location1, '</td>';
+            echo '</tr>';
+        }
+        echo '</table>';
+    }
+    
+}
+
 $dataSet1 = $db->getParticipants("SELECT * FROM `participants` WHERE email = '" . $email . "'");
 foreach ($dataSet1 as $data1) {
     $id_event = $data1->getParticipantIdEvent();

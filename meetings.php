@@ -13,7 +13,6 @@ include("header.php");
     <br><br/>
     <div class="tab-content" id="tab_example"></div>
 </div>
-<button class="btn btn-info">Δημιουργία Meeting</button>
 
 </body>
 <script>
