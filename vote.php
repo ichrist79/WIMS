@@ -3,7 +3,7 @@
 <?php
 session_start();
 include 'functions.php';
-$db = new Database("localhost", "root", "", "wimsfinal");
+$db = new Database("localhost", "root", "", "wimsfinaldatabase");
 $id_event = $_POST['id_event'];
 $user_id = $_SESSION['uid'];
 
@@ -21,10 +21,10 @@ if ($dataSet) {
     ?>
     <form id="frm" action="saveVote.php" method="post">
         <?php
-        echo '<table cellpadding="0" cellspacing="0" class="table table-hover">';
-        echo '<tr><th>Ημερομηνία</th><th>Ώρα</th><th>Ψήφος</th></tr>';
+        echo '<table cellpadding="0" cellspacing="0" class="table table-hover table-responsive">';
+        echo '<tr class="success"><th><span class="glyphicon glyphicon-calendar"></span>&nbsp;Ημερομηνία</th><th><span class="glyphicon glyphicon-time"></span>&nbsp;Ώρα</th><th><span class="glyphicon glyphicon-thumbs-up"></span>&nbsp;Ψήφος</th></tr>';
         foreach ($dataSet as $data) {
-            echo '<tr>';
+            echo '<tr class="info">';
             echo '<td>', $data->getMeetingDateDay(), '</td>';
             echo '<td>', $data->getMeetingDateTime(), '</td>';
             $data1 = $data->getMeetingDateId();
@@ -40,7 +40,7 @@ if ($dataSet) {
         }
         echo '</table>';
         ?>
-        <button class="btn btn-success" type="submit" name="formSubmit" id="frmSubmit" >Save</button>
+        <button class="btn btn-success" type="submit" name="formSubmit" id="frmSubmit" >Καταχώρηση</button>
     </form>
     <?php
 } else
