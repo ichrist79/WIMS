@@ -10,7 +10,7 @@ require ("participants.php");
 
 
 try {
-    $conn = new PDO("mysql:host=$servername;dbname=wimsfinal;charset=utf8", $username, $password); //dbname=id155970_wims
+    $conn = new PDO("mysql:host=$servername;dbname=wimsfinaldatabase;charset=utf8", $username, $password); //dbname=id155970_wims
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 } catch (PDOException $e) {
     echo "Connection failed: " . $e->getMessage();
