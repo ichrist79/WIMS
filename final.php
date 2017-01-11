@@ -2,7 +2,7 @@
 
 session_start();
 include 'functions.php';
-$db = new Database("localhost", "root", "", "wimsfinal");
+$db = new Database("localhost", "root", "", "wimsfinaldatabase");
 $id_event = $_POST['id_event'];
 $user_id = $_SESSION['uid'];
 
