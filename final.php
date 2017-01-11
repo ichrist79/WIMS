@@ -15,10 +15,10 @@ $stmt1->execute();
 $title = $stmt1->fetchColumn();
 
 $dataSet = $db->getMeetingsDate("SELECT * FROM `event_day_time` WHERE vote= '" . $vote . "' AND id_event= '" . $id_event . "' ");
-echo '<table cellpadding="0" cellspacing="0" class="table table-hover">';
-echo '<tr><th>Τίτλος Meeting</th><th>Ημερομηνία</th><th>Ώρα</th><th>Σύνολο Ψήφων</th></tr>';
+echo '<table cellpadding="0" cellspacing="0" class="table table-hover table-responsive">';
+echo '<tr class="success"><th><span class="glyphicon glyphicon-pushpin"></span>&nbsp;Τίτλος Meeting</th><th><span class="glyphicon glyphicon-calendar"></span>&nbsp;Ημερομηνία</th><th><span class="glyphicon glyphicon-time"></span>&nbsp;Ώρα</th><th><span class="glyphicon glyphicon-thumbs-up"></span>&nbsp;Σύνολο Ψήφων</th></tr>';
 foreach ($dataSet as $data) {
-    echo '<tr>';
+    echo '<tr class="info">';
     echo '<td>', $title, '</td>';
     echo '<td>', $data->getMeetingDateDay(), '</td>';
     echo '<td>', $data->getMeetingDateTime(), '</td>';
