@@ -2,7 +2,7 @@
 session_start();
 include("header.php");
 ?>
-<h2> Προγραμμάτισε Ένα Meeting </h2>
+<h2> Προγραμμάτισε Ένα Meeting  <span class="glyphicon glyphicon-briefcase"></span> <span class="glyphicon glyphicon-map-marker"></span> <span class="glyphicon glyphicon-comment"></span> <span class="glyphicon glyphicon-calendar"></span> <span class="glyphicon glyphicon-send"></span></h2>
 
 <br></br>
 
@@ -13,13 +13,15 @@ include("header.php");
         <div class="form-group">
             <div class="form-group col-sm-6" >
                 <label for="title" class="control-label col-xs-3">Τίτλος</label>
-                <div class="col-xs-9">
+                <div class="col-xs-9 has-feedback form-group">
+                    <i class="glyphicon glyphicon-briefcase form-control-feedback"></i>
                     <input type="text" class="form-control" id="title" name="title"/>
                 </div>
             </div>
             <div class="form-group col-sm-6" >
                 <label for="location" class="control-label col-xs-3">Τοποθεσία</label>
-                <div class="col-xs-9">
+                <div class="col-xs-9 has-feedback form-group">
+                    <i class="glyphicon glyphicon-map-marker form-control-feedback"></i>
                     <input type="text" class="form-control" id="txtautocomplete" name="location"/>
                     <label id="lblResult"> </label>
                 </div>
@@ -29,7 +31,8 @@ include("header.php");
         <div class="form-group">
             <div class="form-group col-sm-6">
                 <label for="desription" class="control-label col-xs-3">Περιγραφή</label>
-                <div class="col-xs-9">
+                <div class="col-xs-9 has-feedback form-group">
+                    <i class="glyphicon glyphicon-comment form-control-feedback"></i>
                     <textarea rows="5" cols="60" class="form-control" id="description" name="perigrafi"></textarea>
                 </div>
             </div>
@@ -40,29 +43,31 @@ include("header.php");
         <div class="form-group">
             <div class="form-group col-sm-6" >
                 <label for="Day" class="control-label col-xs-3">Ημέρα & Ώρα</label>
-                <div class="col-xs-6">
+                <div class="col-xs-9 form-group">
                     <table id="date">
                         <tr>
                             <td><input type="date" name="date[]" class="form-control" min="<?php echo date('Y-m-d', strtotime("+2 day")); ?>"/></td>
                             <td><input type="time" name="time[]" class="form-control"/></td>
+                            <td>&nbsp;<span class="glyphicon glyphicon-calendar"></span></td>
                         </tr>
                         <!--<button class="btn btn-info" type="button" name="add" id="add_input">Πρόσθεσε Ημέρα & Ώρα</button>-->
                     </table>
-                    <button class="btn btn-info" type="button" name="add" id="add_input">Πρόσθεσε Ημέρα & Ώρα</button>
+                    <button class="btn btn-info" type="button" name="add" id="add_input"><span class="glyphicon glyphicon-plus"></span>&nbsp;Πρόσθεσε Ημέρα & Ώρα</button>
                 </div>
             </div>	
             <div  class="form-group col-sm-6" >
                 <label for="Participants" class="control-label col-xs-3">Συμμετέχοντες</label>
-                <div class="col-xs-6">
+                <div class="col-xs-9 form-group">
                     <table id="email">
                         <tr>
                             <td><input class="form-control" placeholder="Contact's email" name="email[]" id="contact_email" type="text" 
                                        title="Contact's email (format: xxx@xxx.xxx)" 
                                        pattern="[a-zA-Z0-9!#$%&amp;'*+\/=?^_`{|}~.-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)"></td>
+                            <td>&nbsp;<span class="glyphicon glyphicon-envelope"></span></td>
                         </tr>
                         <!--<button class="btn btn-info" type="button" name="add_inputm" id="add_inputm">Πρόσθεσε Συμμετέχοντες</button>-->
                     </table>
-                    <button class="btn btn-info" type="button" name="add_inputm" id="add_inputm">Πρόσθεσε Συμμετέχοντες</button>
+                    <button class="btn btn-info" type="button" name="add_inputm" id="add_inputm"><span class="glyphicon glyphicon-plus"></span>&nbsp;Πρόσθεσε Συμμετέχοντες</button>
                 </div>
             </div>
         </div>
@@ -121,7 +126,7 @@ try {
                     if (trim($_POST["email"][$m] != '')) {
                         $conn->exec("INSERT INTO participants (user_id,email,id_event) VALUES ('" . $userid . "','" . $_POST["email"][$m] . "','" . $eventid . "')");
                         $to = ($_POST["email"][$m]);
-                        $subject = 'Πρόσκληση σε νέο meeting';
+                        $subject = 'the subject';
                         $message = '<div><p>Έχετε πρόσκληση για συμμετοχή σε καινούριο meeting</p>
                                          <p>Πατήστε <a href="https://wwwwimsgr.000webhostapp.com">εδώ</a> για να μεταβείτε στο Wims</p>
                                     </div></body></html>';
@@ -131,7 +136,6 @@ try {
                                 'Reply-To: webmaster@example.com' . "\r\n" .
                                 'X-Mailer: PHP/' . phpversion();
                         mail($to, $subject, $message, $headers);
-                        
                     } else {
                         echo '<script>window.alert("Δώσε το Email!")</script>';
                     }
