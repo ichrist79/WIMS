@@ -1,6 +1,6 @@
 <div class="container">
     <footer class="panel-footer">
-        Copyright 2017
+        <span class="glyphicon glyphicon-copyright-mark"></span>&nbsp; 2017 WIMS TEAM Konstantinou, Merimanis, Mintis, Christoudis All rights reserved
     </footer>
 </div>
 </div>     
