@@ -121,7 +121,7 @@ try {
                     if (trim($_POST["email"][$m] != '')) {
                         $conn->exec("INSERT INTO participants (user_id,email,id_event) VALUES ('" . $userid . "','" . $_POST["email"][$m] . "','" . $eventid . "')");
                         $to = ($_POST["email"][$m]);
-                        $subject = 'the subject';
+                        $subject = 'Πρόσκληση σε νέο meeting';
                         $message = '<div><p>Έχετε πρόσκληση για συμμετοχή σε καινούριο meeting</p>
                                          <p>Πατήστε <a href="https://wwwwimsgr.000webhostapp.com">εδώ</a> για να μεταβείτε στο Wims</p>
                                     </div></body></html>';
