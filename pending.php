@@ -2,7 +2,7 @@
 
 session_start();
 include 'functions.php';
-$db = new Database("localhost", "root", "", "wimsfinal");
+$db = new Database("localhost", "root", "", "wimsfinaldatabase");
 $user_id = $_SESSION['uid'];
 $stmt = $conn->prepare("SELECT email FROM user WHERE user_id = '" . $user_id . "'");
 $stmt->bindParam("user_id", $user_id, PDO::PARAM_STR);
@@ -18,8 +18,8 @@ $stmt->execute();
 $count1 = $stmt->rowCount();
 
 if ($count1 > 0) {
-    echo '<table cellpadding="0" cellspacing="0" class="table table-hover">';
-    echo '<tr><th>Meeting του χρήστη...</th><th>Τίτλος</th><th>Περιγραφή</th><th>Τοποθεσία</th><th>Options<th>Extra</th></tr>';
+    echo '<table cellpadding="0" cellspacing="0" class="table table-hover table-responsive">';
+    echo '<tr class="success"><th><span class="glyphicon glyphicon-user"></span>&nbsp; Meeting του χρήστη...</th><th><span class="glyphicon glyphicon-pushpin"></span>&nbsp; Τίτλος</th><th><span class="glyphicon glyphicon-comment"></span>&nbsp; Περιγραφή</th><th><span class="glyphicon glyphicon-map-marker"></span>&nbsp; Τοποθεσία</th><th><span class="glyphicon glyphicon-wrench"></span>&nbsp; Options<th><span class="glyphicon glyphicon-asterisk"></span>&nbsp; Extra</th></tr>';
     for ($i = 0; $i < $count1; $i++) {
         $get_id_event = $stmt->fetch(PDO::FETCH_ASSOC);
         $id_event = $get_id_event['id_event'];
@@ -34,7 +34,7 @@ if ($count1 > 0) {
         if ($dataSet) {
 
             foreach ($dataSet as $data) {
-                echo '<tr>';
+                echo '<tr class="info">';
                 echo '<td>', $display_name, '</td>';
                 echo '<td>', $data->getActiveTitle(), '</td>';
                 echo '<td>', $data->getActivePerigrafi(), '</td>';
