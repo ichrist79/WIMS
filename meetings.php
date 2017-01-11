@@ -4,11 +4,11 @@ include("header.php");
 ?>
 <div class="jumbotron">
     <p class="text-center" id="welcome">Καλώς ήρθες <?php echo $_SESSION['disp_name']; ?> </p>
-    <h1>Meetings</h1>
+    <h1><span class="glyphicon glyphicon-briefcase"></span> Meetings</h1>
     <div class="btn-group col-sm-12">    
-        <button class="btn btn-primary col-sm-4" type="button" onClick="getActive();">Αρχείο δημιουργηθέντων Meetings</button>
-        <button class="btn btn-primary col-sm-4" type="button"  onClick="getVote();" >Meetings προς ψήφιση</button>
-        <button class="btn btn-primary col-sm-4" type="button"  onClick="getFinalMeeting();" >Meetings που θα παραστώ</button>
+        <button class="btn btn-primary col-sm-4" type="button" onClick="getActive();"><span class="glyphicon glyphicon-hdd"></span>&nbsp; Αρχείο δημιουργηθέντων Meetings</button>
+        <button class="btn btn-primary col-sm-4" type="button"  onClick="getVote();" ><span class="glyphicon glyphicon-inbox"></span>&nbsp; Meetings προς ψήφιση</button>
+        <button class="btn btn-primary col-sm-4" type="button"  onClick="getFinalMeeting();" ><span class="glyphicon glyphicon-ok"></span>&nbsp; Meetings που θα παραστώ</button>
     </div>
     <br><br/>
     <div class="tab-content" id="tab_example"></div>
