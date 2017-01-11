@@ -45,7 +45,7 @@ if (isset($_SESSION['uid'])) {
                     var i = 100;
                     $('#add_input').click(function () {
                         i++;
-                        $('#date').append('<tr id="row' + i + '"><td><input type="date" name="date[]" min="<?php echo date('Y-m-d', strtotime("+2 day")); ?>" class="form-control"/></td><td><input type="time" name="time[]" class="form-control"/></td><td><button type="button" name="remove" id="' + i + '" class="btn btn_remove">Αφαίρεση</button></td></tr>');
+                        $('#date').append('<tr id="row' + i + '"><td><input type="date" name="date[]" min="<?php echo date('Y-m-d', strtotime("+2 day")); ?>" class="form-control"/></td><td><input type="time" name="time[]" class="form-control"/></td><td><button type="button" name="remove" id="' + i + '" class="btn btn_remove"><span class="glyphicon glyphicon-remove"></span></button></td></tr>');
                     });
                     $(document).on('click', '.btn_remove', function () {
                         var button_id = $(this).attr("id");
@@ -66,7 +66,7 @@ if (isset($_SESSION['uid'])) {
                     var m = 1;
                     $('#add_inputm').click(function () {
                         m++;
-                        $('#email').append('<tr id="rowm' + m + '"><td><input class="form-control" placeholder="Contacts email" name="email[]" id="contact_email" type="text" title="Contacts email (format: xxx@xxx.xxx)"pattern="[a-zA-Z0-9!#$%&amp;*+\/=?^_`{|}~.-]+@[a-zA-Z0-9-]+.([a-zA-Z]+)"></td><td><button type="button" name="remove" id="' + m + '" class="btn btn_remove">Αφαίρεση</button> </td></tr>');
+                        $('#email').append('<tr id="rowm' + m + '"><td><input class="form-control" placeholder="Contacts email" name="email[]" id="contact_email" type="text" title="Contacts email (format: xxx@xxx.xxx)"pattern="[a-zA-Z0-9!#$%&amp;*+\/=?^_`{|}~.-]+@[a-zA-Z0-9-]+.([a-zA-Z]+)"></td><td><button type="button" name="remove" id="' + m + '" class="btn btn_remove"><span class="glyphicon glyphicon-remove"></span></button> </td></tr>');
                     });
                     $(document).on('click', '.btn_remove', function () {
                         var button_id = $(this).attr("id");
@@ -100,12 +100,12 @@ if (isset($_SESSION['uid'])) {
                         <div id="navbar" class="navbar-collapse collapse">
                             <ul class="nav navbar-nav navbar-right">
                                 <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo $_SESSION["disp_name"]; ?><span class="caret"></span></a>
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span>&nbsp; <?php echo $_SESSION["disp_name"]; ?><span class="caret"></span></a>
                                     <ul class="dropdown-menu">
-                                        <li><a href="meetings.php">Αρχική</a></li>
-                                        <li><a href="meetingschedule.php">Meeting Scheduler</a></li>
+                                        <li><a href="meetings.php"><span class="glyphicon glyphicon-home"></span>&nbsp; Αρχική</a></li>
+                                        <li><a href="meetingschedule.php"><span class="glyphicon glyphicon-edit"></span>&nbsp; Meeting Scheduler</a></li>
                                         <li class="divider"></li>
-                                        <li class="dropdown-header"><a href="logout.php">Έξοδος</a></li>
+                                        <li class="dropdown-header"><a href="logout.php"><span class="glyphicon glyphicon-off"></span>&nbsp; Έξοδος</a></li>
                                     </ul>
                                 </li>
                             </ul>
@@ -143,14 +143,19 @@ if (isset($_SESSION['uid'])) {
                                     <div id="navbar" class="navbar-collapse collapse">
 
                                         <form class="navbar-form navbar-right" role="form" method="POST" action="login.php">
-                                            <div class="form-group" >
+                                            <div class="form-group has-feedback has-feedback-left" >
                                                 <input type="text" placeholder="Email" class="form-control" name="email">
+                                                <i class="glyphicon glyphicon-user form-control-feedback"></i>
                                             </div>
-                                            <div class="form-group">
+                                            <div class="form-group has-feedback">
                                                 <input type="password" placeholder="Κωδικός" class="form-control" name="password">
+                                                <i class="glyphicon glyphicon-lock form-control-feedback"></i>
                                             </div>
                                             <!--<a href="profile.html" class="btn btn-primary">Sign In</a>-->
-                                            <input type="submit" class="btn btn-success" name="login" value="Είσοδος">
+                                            <div class="form-group has-feedback">
+                                                <input type="submit" class="btn btn-success form-control" name="login" value="Είσοδος">
+                                                <span class="glyphicon glyphicon-log-in form-control-feedback"></span>
+                                            </div>
                                         </form>
 
                                     </div>
